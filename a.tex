@@ -1,0 +1,539 @@
+% Template for PLoS
+% Version 3.5 March 2018
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that 
+% no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth 2222 as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+
+
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage{graphics}
+\usepackage{xspace}
+\usepackage{graphicx}  %Required
+\usepackage{epsfig}
+\usepackage{amsthm}
+\usepackage{pdfpages}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% Use Unicode characters when possible
+\usepackage[utf8x]{inputenc}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+\newcommand{\hide}[1]{}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+\newcommand{\alg}{\textsc{HaiDetect}\xspace}
+\newcommand{\algt}{\textsc{HaiEarlyDetect}\xspace}
+\newcommand{\celf}{\textsc{Celf}\xspace}
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+% Use the PLoS provided BiBTeX style
+%%%%%%%%%%change this for the final submission %%%%%%%%%%%%%
+%\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+%\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\today}
+
+%% Include all macros below
+
+
+
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+
+\newtheorem{problem}{Problem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{defn}{Definition}
+
+
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\R}{\mathcal{R}}
+\newcommand{\cc}{\mathcal{C}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\vc}{\mathbf{c}}
+\newcommand{\va}{\mathbf{a}}
+\newcommand{\ve}{\mathbf{e}}
+\newcommand{\vb}{\mathbf{b}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\curV}{\hat{\vr}}
+\newcommand{\optV}{\vr^*}
+
+\newcommand{\forBryan}[1]{{\color{red} #1}}
+\newcommand{\forAnil}[1]{{\color{blue} #1}}
+\newcommand{\forJose}[1]{{\color{teal} #1}}
+\newcommand{\frombijaya}[1]{{\color{blue} #1}}
+\newcommand{\fromBryan}[1]{{{\bf \textcolor{blue}{bryan says:}}
+\textcolor{green}{#1}}}
+\newcommand{\frombryan}[1]{{{\bf Bryan says:} #1}}
+\newcommand{\fromanil}[1]{{{\bf \textcolor{red}{anil says:}} \textcolor{red}{#1}}}
+\newcommand{\addedbyanil}[1]{{{\bf \textcolor{red}{added by anil:}} \textcolor{red}{#1}}}
+\newcommand{\reminder}[1]{{\bf *** #1 *** }}
+
+%% END MACROS SECTION
+
+%\newcommand{\hide}[1]{}
+
+\begin{document}
+\vspace*{0.2in}
+
+% Title must be 250 characters or less.
+\begin{flushleft}
+{\Large
+\textbf\newline{Fast and Near-Optimal Monitoring for Healthcare Acquired Infection Outbreaks}
+}\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+
+		Bijaya Adhikari\textsuperscript{1$\ast$},
+Bryan Lewis\textsuperscript{2\dag},
+Anil Vullikanti\textsuperscript{2,3\dag},
+José Mauricio Jiménez\textsuperscript{4\textsection} \\ and  
+B. Aditya Prakash\textsuperscript{1$\ast$}
+\\
+\bigskip
+\textbf{1} Department of Computer Science, Virginia Tech, Blacksburg, VA, USA \\
+\textbf{2} Biocomplexity Institute \& Initiative, University of Virginia, Charlottesville, VA, USA \\
+\textbf{3} Department of Computer Science, University of Virginia, Charlottesville, VA, USA \\
+\textbf{4} Department of Systems Engineering, United States Military Academy, West Point, NY, USA\\
+\bigskip
+
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below.
+$\ast$ \{bijaya, badityap\}@cs.vt.edu\\
+$\dag$ \{brylew, vsakumar\}@virginia.edu\\
+\textsection~ jose.jimenez@westpoint.edu 
+
+\end{flushleft}
+% Please keep the abstract below 300 words
+\section*{Abstract}
+According to the Centers for Disease Control (CDC), one in twenty five hospital patients are infected with at least one healthcare acquired infection (HAI) on any given day. Early detection of possible HAI outbreaks helps practitioners implement countermeasures before an infection spreads extensively. Here we develop an efficient data and model driven method to detect outbreaks with high accuracy. We leverage mechanistic modeling of \textit{C. difficile} infection, a major HAI disease, to simulate its spread in a hospital wing,
+and design efficient near-optimal algorithms to select a sensor set to monitor using an optimization formulation. Results show that our senors detect up to 95\% of "future" \textit{C. difficile} outbreaks. We design our method by incorporating specific hospital practices (like swabbing for infections) as well. As a result, our method outperforms state-of-the-art algorithms for finding sensor sets. Finally, a qualitative study of our results show that the people and locations we select to monitor as sensors are intuitive and meaningful.
+
+
+
+% Please keep the Author Summary between 150 and 200 words
+% Use first person. PLOS ONE authors please skip this step. 
+% Author Summary not valid for PLOS ONE submissions.   
+\section*{Author summary}
+\input{authorSummary}
+
+
+\linenumbers
+
+% Use "Eq" instead of "Equation" for equation citations.
+\section*{Introduction}
+\input{intro}
+
+
+\section*{Materials and methods}
+
+\input{data}
+
+
+\input{problem}
+%\forAnil{
+%%Anil, may I request you to check the text in Blue?
+\input{method}
+%}
+
+
+% Results and Discussion can be combined.
+\section*{Results}
+\input{experiments}
+
+% Place tables after the first paragraph in which they are cited.
+
+
+
+%PLOS does not support heading levels beyond the 3rd (no 4th level headings).
+
+
+\section*{Discussion}
+\input{discussion}
+
+
+\section*{Conclusion}
+\input{conclusion}
+
+\section*{Supporting information}
+
+\par \noindent \textbf{S1 Text. Appendix: Submodularity Definition and Proof.}
+\par \noindent \textbf{S1 Figure. Variation of sensor set distribution for \celf. }
+\par \noindent \textbf{S2 Figure. Average detection time on training data for \algt.}
+\par \noindent \textbf{S3 Figure. Variation in average detection time on training data for \algt}
+\par \noindent \textbf{S4 Figure. Overlap between sensors selected by \alg and \celf various budgets.}
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+
+%\section*{Acknowledgments}
+
+
+\nolinenumbers
+
+% Either type in your references using
+% \begin{thebibliography}{}
+% \bibitem{}
+% Text
+% \end{thebibliography}
+%
+% or
+%
+% Compile your BiBTeX database using our plos2015.
+% style file and paste the contents of your .bbl file
+% here. See http://journals.plos.org/plosone/s/latex for 
+% step-by-step instructions.
+% 
+%\bibliographystyle{abbrv}
+%\bibliography{BIB/references}
+
+\begin{thebibliography}{}
+
+\bibitem{barrett2008episimdemics}
+C.~L. Barrett, K.~R. Bisset, S.~G. Eubank, X.~Feng, and M.~V. Marathe.
+\newblock Episimdemics: an efficient algorithm for simulating the spread of
+  infectious disease over large realistic social networks.
+\newblock In {\em High Performance Computing, Networking, Storage and Analysis,
+  2008. SC 2008. International Conference for}, pages 1--12. IEEE, 2008.
+
+\bibitem{briesemeister2003epidemic}
+L.~Briesemeister, P.~Lincoln, and P.~Porras.
+\newblock Epidemic profiles and defense of scale-free networks.
+\newblock In {\em Proceedings of the 2003 ACM workshop on Rapid malcode}, pages
+  67--75. ACM, 2003.
+
+\bibitem{carrico2013guide}
+R.~Carrico, K.~Bryant, F.~Lessa, B.~Limbago, L.~Fauerbach, J.~Marx, F.~Sands,
+  D.~Stephens, K.~Westhusing, and T.~Wiemken.
+\newblock Guide to preventing clostridium difficile infections.
+\newblock {\em APIC}, 16, 2013.
+
+\bibitem{cassini2016burden}
+A.~Cassini, D.~Plachouras, T.~Eckmanns, M.~A. Sin, H.-P. Blank, T.~Ducomble,
+  S.~Haller, T.~Harder, A.~Klingeberg, M.~Sixtensson, et~al.
+\newblock Burden of six healthcare-associated infections on european population
+  health: estimating incidence-based disability-adjusted life years through a
+  population prevalence-based modelling study.
+\newblock {\em PLoS medicine}, 13(10):e1002150, 2016.
+
+\bibitem{christakis2010social}
+N.~A. Christakis and J.~H. Fowler.
+\newblock Social network sensors for early detection of contagious outbreaks.
+\newblock {\em PloS one}, 5(9):e12948, 2010.
+
+\bibitem{cohen2010clinical}
+S.~H. Cohen, D.~N. Gerding, S.~Johnson, C.~P. Kelly, V.~G. Loo, L.~C. McDonald,
+  J.~Pepin, and M.~H. Wilcox.
+\newblock Clinical practice guidelines for clostridium difficile infection in
+  adults: 2010 update by the society for healthcare epidemiology of america
+  (shea) and the infectious diseases society of america (idsa).
+\newblock {\em Infection Control \& Hospital Epidemiology}, 31(5):431--455,
+  2010.
+
+\bibitem{cosgrove:iche05}
+Cosgrove, S.E., Y.~Qi, K.~Kaye, S.~Harbarth, A.~Karchmer, and Y.~Carmeli.
+\newblock The impact of methicillin resistance in staphylococcus aureus
+  bacteremia on patient outcomes: Mortality, length of stay and hospital
+  charges.
+\newblock {\em Infection Control and Hospital Epidemiology}, pages 166--174,
+  2005.
+
+\bibitem{jimenez-dissertation}
+J.~M. Jimenez.
+\newblock The utilization of macroergonomics and highly-detailed simulation to reduce healthcare-acquired infections. 
+\newblock \emph{Doctoral dissertation, Retrieved from Virginia Tech Electronic Theses and Dissertations.} 
+(Accession Order No. 2014-02-08T09:00:26Z), 2014.
+
+\bibitem{jimenez2012hospitals}
+J.~M. Jim{\'e}nez, B.~Lewis, and S.~Eubank.
+\newblock Hospitals as complex social systems: Agent-based simulations of
+  hospital-acquired infections.
+\newblock In {\em International Conference on Complex Sciences}, pages
+  165--178. Springer, 2012.
+
+\bibitem{jimenez2013application}
+J.~M. Jimenez, B.~L. Lewis, and S.~Eubank.
+\newblock The application of macroergonomics and simulation to improve control
+  of healthcare acquired infections.
+\newblock In {\em Proceedings of the 2013 Winter Simulation Conference:
+  Simulation: Making Decisions in a Complex World}, pages 3938--3939. IEEE
+  Press, 2013.
+
+\bibitem{karadsheh2013fecal}
+Z.~Karadsheh and S.~Sule.
+\newblock Fecal transplantation for the treatment of recurrent clostridium
+  difficile infection.
+\newblock {\em North American journal of medical sciences}, 5(6):339, 2013.
+
+\bibitem{klevens:jama07}
+R.~M. Klevens, M.~Morrison, J.~Nadle, K.~Gershman, S.~Ray, L.~Harrison,
+  R.~Lynfield, G.~Dumyati, J.~Townes, A.~Craig, E.~Zell, G.~Fosheim,
+  L.~McDougal, R.~Carey, and S.~Fridkin.
+\newblock Invasive methicillin-resistance staphylococcus aureus infections in
+  the united states.
+\newblock {\em JAMA}, pages 1763--71, 2007.
+
+\bibitem{Leclere:2017gf}
+B.~Lecl{\`e}re, D.~L. Buckeridge, P.-Y. Bo{\"e}lle, P.~Astagneau, and
+  D.~Lepelletier.
+\newblock {Automated detection of hospital outbreaks: A systematic review of
+  methods}.
+\newblock {\em PloS one}, 12(4):e0176438, Apr. 2017.
+
+\bibitem{leskovec2007cost}
+J.~Leskovec, A.~Krause, C.~Guestrin, C.~Faloutsos, J.~VanBriesen, and
+  N.~Glance.
+\newblock Cost-effective outbreak detection in networks.
+\newblock In {\em Proceedings of the 13th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, pages 420--429. ACM, 2007.
+
+\bibitem{Lewis:2013ht}
+B.~Lewis, S.~Eubank, A.~M. Abrams, and K.~Kleinman.
+\newblock {In silico surveillance: evaluating outbreak detection with
+  simulation models.}
+\newblock {\em BMC medical informatics and decision making}, 13(1):12, Jan.
+  2013.
+
+\bibitem{lofgren:epid14}
+E.~Lofgren, S.~Cole, D.~Weber, D.~Anderson, and R.~Moehring.
+\newblock Hospital-acquired clostridium difficile infections: Estimating
+  all-cause mortality and length of stay.
+\newblock {\em Epidemiology}, pages 570--75, 2014.
+
+\bibitem{lofgren:iche13}
+E.~T. Lofgren, R.~W. Moehring, D.~J. Anderson, D.~J. Weber, , and N.~H.
+  Fefferman.
+\newblock A mathematical model to evaluate the routine use of fecal microbiota
+  transplantation to prevent incident and recurrent clostridium difficile
+  infection.
+\newblock {\em Infection Control and Hospital Epidemiology}, 2013.
+
+\bibitem{nelson:plos16}
+\newblock R.~E.~Nelson, M.~Jones, M.~Leecaster, M.~.H.~Samore, R.~Ray, A.~Huttner, B.~Huttner, 
+K.~Khader, V.~.W.~Stevens, D.~Gerding, M.~L.~Schweizer, M.A.~Rubin. 
+\newblock An Economic Analysis of Strategies to Control Clostridium Difficile Transmission and Infection Using an Agent-Based Simulation Model. 
+\newblock \emph{PLoS One}. 
+2016 Mar 31;11(3):e0152248. doi: 10.1371/journal.pone.0152248. PubMed PMID: 27031464; PubMed Central PMCID: PMC4816545.
+
+\bibitem{reis2007epidemiological}
+B.~Y. Reis, I.~S. Kohane, and K.~D. Mandl.
+\newblock An epidemiological network model for disease outbreak detection.
+\newblock {\em PLoS medicine}, 4(6):e210, 2007.
+
+\bibitem{rozenshtein2016reconstructing}
+P.~Rozenshtein, A.~Gionis, B.~A. Prakash, and J.~Vreeken.
+\newblock Reconstructing an epidemic over time.
+\newblock In {\em Proceedings of the 22nd ACM SIGKDD International Conference
+  on Knowledge Discovery and Data Mining}, pages 1835--1844. ACM, 2016.
+
+\bibitem{rubin:plos13},
+M.~Rubin, M.~Jones, M.~Leecaster, K.~Khader, W.~Ray, A.~Huttner, B.~Huttner, D.~Toth, T.~Sablay, R.~J.~Borotkanics, 
+D.~Gerding, M.~H.~Samore.
+\newblock A Simulation-Based Assessment of Strategies to Control Clostridium Difficile Transmission and Infection.
+\newblock \emph{Public Library of Science} (PLOS ONE), 11(8), 2013.
+
+\bibitem{shao2016forecasting}
+H.~Shao, K.~Hossain, H.~Wu, M.~Khan, A.~Vullikanti, B.~A. Prakash, M.~Marathe,
+  and N.~Ramakrishnan.
+\newblock Forecasting the flu: designing social network sensors for epidemics.
+\newblock {\em SIGKDD epiDAMIK Workshop}, 2018.
+
+\bibitem{soma2016maximizing}
+T.~Soma and Y.~Yoshida.
+\newblock Maximizing monotone submodular functions over the integer lattice.
+\newblock In {\em International Conference on Integer Programming and
+  Combinatorial Optimization}, pages 325--336. Springer, 2016.
+
+\bibitem{stone2009economic}
+P.~W. Stone.
+\newblock Economic burden of healthcare-associated infections: an american
+  perspective.
+\newblock {\em Expert review of pharmacoeconomics \& outcomes research},
+  9(5):417--422, 2009.
+
+\bibitem{sunenshine2006clostridium}
+R.~H. Sunenshine, L.~C. McDonald, et~al.
+\newblock Clostridium difficile-associated disease: new challenges from an
+  established pathogen.
+\newblock {\em Cleveland Clinic journal of medicine}, 73(2):187, 2006.
+
+\bibitem{vanKleef:2013fk}
+E.~van Kleef, J.~V. Robotham, M.~Jit, S.~R. Deeny, and W.~J. Edmunds.
+\newblock {Modelling the transmission of healthcare associated infections: a
+  systematic review}.
+\newblock {\em BMC infectious diseases}, 13(1):e1001172, June 2013.
+
+\bibitem{yoo2010clostridium}
+J.~Yoo and A.~L. Lightner.
+\newblock Clostridium difficile infections: what every clinician should know.
+\newblock {\em The Permanente Journal}, 14(2):35, 2010.
+
+\bibitem{zhang2016near}
+Y.~Zhang, A.~Adiga, S.~Saha, A.~Vullikanti, and B.~A. Prakash.
+\newblock Near-optimal algorithms for controlling propagation at group scale on
+  networks.
+\newblock {\em IEEE Transactions on Knowledge and Data Engineering},
+  28(12):3339--3352, 2016.
+
+\bibitem{zhang2014dava}
+Y.~Zhang and B.~A. Prakash.
+\newblock Dava: Distributing vaccines over networks under prior information.
+\newblock In {\em Proceedings of the 2014 SIAM International Conference on Data
+  Mining}, pages 46--54. SIAM, 2014.
+
+
+\end{thebibliography}
+
+%\clearpage
+%\includepdf[pages=-]{Appendix/appendix}
+
+\end{document}
+
