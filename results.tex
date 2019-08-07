@@ -87,6 +87,7 @@ Our conclusion in this subsection is that it is only marginally beneficial to ex
 In the $k$-median formulation, we know ahead of time exactly how many facilities we may place, and we may plan our solution accordingly. In real scenarios, facilities may be placed over time in incremental steps or stages, the final number of which may not be known. In this case given, say, 5 facilities to start with, we don't just want to find the best solution using 5 facilities, but one that would continue to give good solutions if more facilities are added in future.
 
 
+\red{some of this needs to go into the method section}
 To this end we introduce the notion of a ``kernel''. 
 Roughly speaking, a kernel is a set of \textit{important} facilities that appear in many different solutions regardless of the value of $k$ chosen. They also have the stability property that larger kernels are always supersets of all smaller kernels. This is rarely the case when using $k$-median solutions directly.
 
